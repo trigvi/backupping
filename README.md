@@ -42,5 +42,5 @@ This guide will show you how to setup the codebase into `/var/programs/Backuppin
     ```
     crontab -u <USER> -e
 
-    0 0 * * * cd /var/programs/Backupping; /var/programs/Backupping3/env/bin/python3 backupping.py >> logs/backupping.log
+    0 0 * * * cd /var/programs/Backupping; /var/programs/Backupping/env/bin/python3 backupping.py >> logs/backupping.log
     ```
