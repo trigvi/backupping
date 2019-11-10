@@ -1,0 +1,5 @@
+env/*
+logs/*
+!logs/empty
+*.pyc
+mysettings.json

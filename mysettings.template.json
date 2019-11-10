@@ -1,0 +1,28 @@
+{
+
+    "aws": {
+        "key":      "value",
+        "secret":   "value",
+        "region":   "value",
+        "bucket":   "value"
+    },
+
+    "zip_exclude": [
+        "*/env/*",
+        "*/node_modules/*",
+        "*/vendor/*",
+        "*DS_Store",
+        "*composer.phar",
+        "*composer.lock",
+        "*mysettings.json",
+        "*mysettings.py",
+        "*package-lock.json",
+        "*pyc"
+    ],
+
+    "jobs": {
+        "/path/to/local/dir1":  "/remote/path/to/file1.zip",
+        "/path/to/local/dir2":  "/remote/path/to/file2.zip"
+    }
+
+}
