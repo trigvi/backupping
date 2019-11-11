@@ -2,7 +2,7 @@ Python script to zip and backup directories to an AWS S3 bucket.
 
 The `mysettings.json` file let's you configure your AWS credentials and the jobs that `backupping.py` will execute. A job is simply a combination of local directory to be zipped and AWS S3 bucket's path to be uploaded to.
 
-*Developed with Python 3.5*
+*Developed with Python 3.5, Debian 9*
 
 &nbsp;
 &nbsp;
