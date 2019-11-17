@@ -1,6 +1,6 @@
 Python app to zip directories and upload them to AWS S3.
 
-The `mysettings.json` file let's you configure your AWS credentials and the jobs that `backupping.py` will execute. A job is simply a combination of local directory to be zipped and AWS S3 bucket's path to be uploaded to.
+The `mysettings.json` file let's you configure your AWS credentials and the jobs that `backupping.py` will execute. A job is simply a combination of local directory to be zipped and AWS S3 path to be uploaded to.
 
 *Developed with: Python 3.5, Debian 9*
 
@@ -9,38 +9,54 @@ The `mysettings.json` file let's you configure your AWS credentials and the jobs
 
 # Setup
 
-This guide will show you how to setup the codebase into `/var/programs/Backupping`
-
-* Clone repository
+* Before cloning the repo, create dedicated Linux user `backupping`:
     ```
-    mkdir -p /var/programs
-    git clone <repo_url> /var/programs/Backupping
+    sudo adduser --shell /bin/bash --gecos "User" --home /home/backupping backupping
     ```
 
-* Create and activate Python environment, install packages
+* Switch to user `backupping` and clone this git repo:
     ```
-    cd /var/programs/Backupping
+    sudo su - backupping
+    git clone <REPO_URL> repository
+    ```
+
+* Create Python environment:
+    ```
+    cd repository
     python3 -m venv env
-    source env/bin/activate
+    ```
+
+* Add automatic environment activation to `bashrc`:
+    ```
+    printf "\nsource ~/repository/env/bin/activate\n" >> ~/.bashrc
+    source ~/.bashrc
+    ```
+
+* Install dependencies
+    ```
     pip3 install -r requirements.txt
     ```
 
-* Create `mysettings.json` by copying template, then open it and customise it:
+* Create settings file by copying template:
     ```
-    cd /var/programs/Backupping
     cp mysettings.template.json mysettings.json
+    ```
+
+* Open `mysettings.json` and customise accordingly:
+    ```
     vim mysettings.json
     ```
 
-* Set file permissions:
+* Switch back to the previous user:
     ```
-    sudo chmod 755 -R /var/programs/Backupping
-    sudo chmod 777 -R /var/programs/Backupping/logs
+    exit
     ```
 
-* Setup cron schedule, for example:
+* Setup cron schedule:
     ```
-    crontab -u <USER> -e
+    sudo vim /etc/crontab
+    ```
 
-    0 0 * * * cd /var/programs/Backupping; /var/programs/Backupping/env/bin/python3 backupping.py >> logs/backupping.log
+    ```
+    0 0 * * *   backupping   cd /home/backupping/repository; /home/backupping/repository/env/bin/python3 backupping.py >> logs/backupping.log
     ```
