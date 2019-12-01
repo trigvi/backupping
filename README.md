@@ -2,7 +2,7 @@ Python app to zip directories and upload them to AWS S3.
 
 The `mysettings.json` file let's you configure your AWS credentials and the jobs that `backupping.py` will execute. A job is simply a combination of local directory to be zipped and AWS S3 path to be uploaded to.
 
-*Developed with: Python 3.5, Debian 9*
+*Developed with: Python 3.7, Debian 10*
 
 &nbsp;
 &nbsp;
@@ -18,11 +18,12 @@ The `mysettings.json` file let's you configure your AWS credentials and the jobs
     ```
     sudo su - backupping
     git clone <REPO_URL> repository
+    cd repository
+    git config core.filemode false
     ```
 
 * Create Python environment:
     ```
-    cd repository
     python3 -m venv env
     ```
 
