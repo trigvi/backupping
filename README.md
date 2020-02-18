@@ -59,5 +59,5 @@ The `mysettings.json` file let's you configure your AWS credentials and the jobs
     ```
 
     ```
-    0 0 * * *   backupping   cd /home/backupping/repository; /home/backupping/repository/env/bin/python3 backupping.py >> logs/backupping.log
+    30 0 * * *   backupping   cd /home/backupping/repository; /home/backupping/repository/env/bin/python3 backupping.py >> logs/backupping.log
     ```
